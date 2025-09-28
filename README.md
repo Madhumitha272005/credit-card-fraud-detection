@@ -112,24 +112,24 @@ These 5 cards have the highest average risk score → most likely to be involved
 This helps investigators prioritize monitoring or blocking suspicious cards.
 
 5. Graph Analysis
-a) Risk Score Distribution
+ a) Risk Score Distribution
 Histogram comparing legit vs fraud transactions:
 Legit transactions cluster at low risk scores.
 Fraud transactions are concentrated at higher risk scores.
 Insight: Risk score successfully separates most fraud from legit transactions.
 
-b) Top 5 Fraudulent Cards (Bar Chart)
+ b) Top 5 Fraudulent Cards (Bar Chart)
 Shows highest-risk cards by average risk score.
 Observation: CARD_472 is the riskiest, followed by CARD_228, CARD_45, etc.
 Useful for visual prioritization of fraudulent accounts.
 
-c) Fraudulent Card Timeline (Line Plot)
+ c) Fraudulent Card Timeline (Line Plot)
 Plots risk score over time for each of the top 5 fraud cards.
 Observation:
 Sudden spikes indicate unusual transactions.
 Continuous monitoring allows real-time detection of fraud trends.
 
-d) Transaction Amount Comparison (Boxplot)
+ d) Transaction Amount Comparison (Boxplot)
 Compares legit vs fraud transaction amounts.
 Observation: Fraudulent transactions often have higher amounts or outliers.
 Highlights anomalous spending behavior that supports risk scoring.
