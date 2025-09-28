@@ -67,7 +67,71 @@ While not a standard ML algorithm, your project computes a behavioral anomaly sc
 Helps detect unusual spending behavior for each card.
 Normalized to [0,1] and combined with Random Forest probability to compute the final risk score: risk_score=0.6×rf_score+0.4×behavioral_anomaly
 
-	​
+✅ ouput explanation:
+1. Dataset Loaded
+   ✅ Dataset loaded: (284807, 31)
+My dataset contains 284,807 transactions with 31 columns (features + class label).
+This includes PCA components (V1–V28), Amount, Time, and the class label (Class: 0 = Legit, 1 = Fraud).​
 
+2. Random Forest Model
+   ✅ RandomForest ROC AUC: 0.9276
+ROC-AUC = 0.9276 → The model has very good discrimination between legitimate and fraudulent transactions.
+Classification Report:
+Class	   Precision  Recall  F1-score	Support
+0 (Legit)	1.00	   1.00	  1.00	    85,295
+1 (Fraud)	0.97	   0.70	  0.82	    148
+Legit transactions are almost perfectly classified.
+Fraud transactions:
+Precision = 0.97 → 97% of predicted frauds were actually fraud.
+Recall = 0.70 → 70% of actual frauds were detected.
+F1-score = 0.82 → Good balance considering dataset is highly imbalanced.
+Accuracy ≈ 1.00 → Very high due to class imbalance (most transactions are legit).
+Key takeaway: Random Forest is effective but may miss ~30% of fraud cases due to imbalance.
+
+3. Online Learning (River)
+   ⚡ Running Online Learning with River...
+✅ Online learning AUC (first 5000 txns): 0.7166
+Online Logistic Regression trained incrementally on first 5,000 transactions.
+AUC = 0.7166 → Moderate predictive performance.
+Slightly lower than batch Random Forest because:
+Only first 5,000 transactions were used.
+Online learning adapts gradually; requires more data to reach peak performance.
+Purpose: Detect emerging fraud patterns in real-time as new transactions arrive.
+
+4. Fraud Detected Cards
+   🚨 Fraud Detected Cards:
+ card_id
+ CARD_472    0.616078
+ CARD_228    0.613106
+ CARD_45     0.604736
+ CARD_375    0.602671
+ CARD_92     0.602401
+The risk score combines Random Forest predictions and behavioral anomalies:
+risk_score=0.6×rf_score+0.4×behavioral_anomaly
+These 5 cards have the highest average risk score → most likely to be involved in fraudulent activities.
+This helps investigators prioritize monitoring or blocking suspicious cards.
+
+5. Graph Analysis
+a) Risk Score Distribution
+Histogram comparing legit vs fraud transactions:
+Legit transactions cluster at low risk scores.
+Fraud transactions are concentrated at higher risk scores.
+Insight: Risk score successfully separates most fraud from legit transactions.
+
+b) Top 5 Fraudulent Cards (Bar Chart)
+Shows highest-risk cards by average risk score.
+Observation: CARD_472 is the riskiest, followed by CARD_228, CARD_45, etc.
+Useful for visual prioritization of fraudulent accounts.
+
+c) Fraudulent Card Timeline (Line Plot)
+Plots risk score over time for each of the top 5 fraud cards.
+Observation:
+Sudden spikes indicate unusual transactions.
+Continuous monitoring allows real-time detection of fraud trends.
+
+d) Transaction Amount Comparison (Boxplot)
+Compares legit vs fraud transaction amounts.
+Observation: Fraudulent transactions often have higher amounts or outliers.
+Highlights anomalous spending behavior that supports risk scoring.
 
 
