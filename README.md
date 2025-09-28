@@ -3,7 +3,7 @@ This project implements a comprehensive credit card fraud detection system entir
 
 The approach includes feature engineering based on transaction time, card behavior, and statistical metrics, allowing the model to detect anomalous spending patterns. Risk scores are calculated by combining model predictions with behavioral anomalies, identifying high-risk cards and transactions.
 
-Key Features:
+🎯 Key Features:
 Batch ML Model: Random Forest trained on historical data for robust fraud prediction.
 Behavioral Analysis: Features like transaction hour, day, night activity, average/median amount per card.
 Online Learning: Real-time fraud detection using River’s Logistic Regression and StandardScaler.
@@ -11,13 +11,13 @@ Risk Scoring: Combines Random Forest predictions and behavioral anomaly metrics 
 Visualizations: Risk distribution, top fraudulent cards, transaction timelines, and transaction amount comparisons.
 Output: Generates transactions_with_risk.csv with fraud scores and risk metrics.
 
-Tech Stack:
+🔧Tech Stack:
 Programming Language: Python
 Libraries: pandas, numpy, scikit-learn, river, matplotlib, seaborn
 Dataset: Kaggle Credit Card Fraud Detection
 Environment: Python IDLE
 
-Credit Card Fraud Detection Working:
+✅Credit Card Fraud Detection Working:
 Credit Card Fraud Detection is a process that identifies unauthorized or suspicious transactions to protect users and financial institutions. In your project, the system works through a combination of machine learning models, behavioral analysis, and risk scoring.
 
 Step 1: Data Preparation
@@ -52,7 +52,7 @@ Step 6: Deployment
 Trained models are saved as .pkl files for easy integration into real-time applications or web interfaces.
 The system can continuously monitor transactions and adapt to new fraud patterns.
 
-ML ALGORITHM USED INT HIS PROJECT:
+🧮 ML algorithm used in this project :
 1. Random Forest Classifier
 Type: Ensemble Learning (Classification)
 Formula (Majority Voting):  y^​=mode{T1​(x),T2​(x),...,Tn​(x)}
